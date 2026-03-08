@@ -42,9 +42,23 @@ const socials = [
 const Connect = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
+  const [sending, setSending] = useState(false);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+    setSending(true);
+    const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
+    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
+    window.open(`mailto:hhk2170@gmail.com?subject=${subject}&body=${body}`, "_self");
+    toast.success("Opening your email client...");
+    setTimeout(() => {
+      setSending(false);
+      setFormData({ name: "", email: "", message: "" });
+    }, 1000);
   };
 
   return (
