@@ -400,7 +400,7 @@ const themes: ThemeDef[] = [
 
 const ThemeSwitcher = () => {
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState(() => localStorage.getItem("portfolio-theme") || "Ocean");
+  const [active, setActive] = useState(() => localStorage.getItem("portfolio-theme") || "Mint");
   const [mode, setMode] = useState<"dark" | "light">(() => (localStorage.getItem("portfolio-mode") as "dark" | "light") || "dark");
 
   const applyTheme = (themeName: string, themeMode: "dark" | "light") => {
