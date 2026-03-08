@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import { Code2, Bot, Zap } from "lucide-react";
+import { Code2, Bug, Cloud } from "lucide-react";
 
 const highlights = [
-  { icon: Code2, title: "Full Stack Dev", desc: "Building end-to-end web applications with Python, Django, Java, and Spring Boot." },
-  { icon: Bot, title: "AI & Automation", desc: "Leveraging AI tools and automation to build smarter, more efficient systems." },
-  { icon: Zap, title: "Scalable Solutions", desc: "Designing architectures that scale — from MVPs to production-grade applications." },
+  { icon: Code2, title: "Backend Engineering", desc: "Building scalable backend services with Java, Spring Boot, and RESTful microservices." },
+  { icon: Bug, title: "Production Debugger", desc: "Strong debugging & issue-analysis mindset — fixing bugs that matter in real production systems." },
+  { icon: Cloud, title: "Cloud-Aware Dev", desc: "Experience with AWS, DynamoDB, PostgreSQL, and deploying cloud-ready applications." },
 ];
 
 const AboutSection = () => {
@@ -19,12 +19,12 @@ const AboutSection = () => {
         >
           <p className="font-mono text-sm text-primary tracking-widest uppercase mb-3">About Me</p>
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Building scalable <span className="text-gradient">web solutions</span>
+            Backend is not just code — <span className="text-gradient">it's responsibility</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
-            I'm Hasnain Haidar, a motivated Full Stack Developer from Lucknow, India with a strong foundation 
-            in Python, Django, Core Java, and modern web technologies. Currently training at YuSa Infotech, 
-            I build real-world applications with clean, efficient, and scalable code.
+            I'm Hasnain Haidar, a B.Tech graduate (2025) and backend-focused software engineer from Lucknow, India. 
+            I enjoy working close to real production systems, fixing bugs that matter, and building scalable backend services. 
+            Previously interned at PearlThoughts where I built custom session modules, fixed production issues, and contributed to the Schedula Backend Project.
           </p>
         </motion.div>
 
