@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Connect from "./pages/Connect";
 import NotFound from "./pages/NotFound";
+import ThemeSwitcher from "./components/ThemeSwitcher";
 
 const queryClient = new QueryClient();
 
@@ -14,6 +15,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <ThemeSwitcher />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
