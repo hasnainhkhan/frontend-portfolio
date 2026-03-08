@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Instagram, Mail, Download, ArrowLeft } from "lucide-react";
+import { Github, Linkedin, Instagram, Mail, Download, ArrowLeft, Send, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const socials = [
   {
@@ -38,9 +39,15 @@ const socials = [
 ];
 
 const Connect = () => {
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+  };
+
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* Ambient glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px] pointer-events-none" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 py-20">
@@ -62,15 +69,12 @@ const Connect = () => {
           transition={{ delay: 0.1 }}
           className="mb-16"
         >
-          <p className="font-mono text-sm text-primary tracking-widest uppercase mb-3">
-            Get in Touch
-          </p>
+          <p className="font-mono text-sm text-primary tracking-widest uppercase mb-3">Get in Touch</p>
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Let's <span className="text-gradient">Connect</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
             I'm always open to new opportunities, collaborations, and conversations.
-            Reach out through any platform below.
           </p>
         </motion.div>
 
@@ -98,12 +102,70 @@ const Connect = () => {
           ))}
         </div>
 
+        {/* Contact Form */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          className="mb-16"
+        >
+          <h2 className="text-2xl font-bold mb-6">Send a Message</h2>
+          <div className="grid md:grid-cols-5 gap-8">
+            <div className="md:col-span-2 space-y-5">
+              <div className="glass rounded-xl p-6 flex items-start gap-4">
+                <Mail className="w-5 h-5 text-primary mt-0.5" />
+                <div>
+                  <p className="font-semibold text-sm">Email</p>
+                  <a href="mailto:hhk2170@gmail.com" className="text-muted-foreground text-sm hover:text-primary transition-colors">hhk2170@gmail.com</a>
+                </div>
+              </div>
+              <div className="glass rounded-xl p-6 flex items-start gap-4">
+                <MapPin className="w-5 h-5 text-primary mt-0.5" />
+                <div>
+                  <p className="font-semibold text-sm">Location</p>
+                  <p className="text-muted-foreground text-sm">Lucknow, India</p>
+                </div>
+              </div>
+            </div>
+
+            <form onSubmit={handleSubmit} className="md:col-span-3 glass rounded-xl p-8 space-y-5">
+              <input
+                type="text"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all text-sm"
+              />
+              <input
+                type="email"
+                placeholder="Your Email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all text-sm"
+              />
+              <textarea
+                placeholder="Your Message"
+                rows={4}
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none text-sm"
+              />
+              <button
+                type="submit"
+                className="w-full px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity glow-box flex items-center justify-center gap-2"
+              >
+                Send Message <Send className="w-4 h-4" />
+              </button>
+            </form>
+          </div>
+        </motion.div>
+
         {/* Resume Download */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7 }}
-          className="glass rounded-xl p-8 border border-border/50 text-center"
+          transition={{ delay: 0.8 }}
+          className="glass rounded-xl p-8 border border-border/50 text-center mb-10"
         >
           <h2 className="text-2xl font-bold mb-2">Download My Resume</h2>
           <p className="text-muted-foreground mb-6">
@@ -123,8 +185,8 @@ const Connect = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9 }}
-          className="mt-10 text-center"
+          transition={{ delay: 1 }}
+          className="text-center"
         >
           <a
             href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=hasnainhaidar"
