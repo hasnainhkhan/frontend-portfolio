@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import { Code2, Palette, Zap } from "lucide-react";
+import { Code2, Bot, Zap } from "lucide-react";
 
 const highlights = [
-  { icon: Code2, title: "Clean Code", desc: "Writing maintainable, scalable code with modern best practices." },
-  { icon: Palette, title: "UI/UX Focus", desc: "Creating intuitive interfaces with pixel-perfect attention to detail." },
-  { icon: Zap, title: "Performance", desc: "Optimizing for speed, accessibility, and seamless user experience." },
+  { icon: Code2, title: "Full Stack Dev", desc: "Building end-to-end web applications with Python, Django, Java, and Spring Boot." },
+  { icon: Bot, title: "AI & Automation", desc: "Leveraging AI tools and automation to build smarter, more efficient systems." },
+  { icon: Zap, title: "Scalable Solutions", desc: "Designing architectures that scale — from MVPs to production-grade applications." },
 ];
 
 const AboutSection = () => {
@@ -19,12 +19,12 @@ const AboutSection = () => {
         >
           <p className="font-mono text-sm text-primary tracking-widest uppercase mb-3">About Me</p>
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Crafting digital <span className="text-gradient">experiences</span>
+            Building scalable <span className="text-gradient">web solutions</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
-            I'm a web developer with a passion for building beautiful, functional applications. 
-            I specialize in React, TypeScript, and modern frontend technologies, 
-            bringing designs to life with clean, efficient code.
+            I'm Hasnain Haidar, a motivated Full Stack Developer from Lucknow, India with a strong foundation 
+            in Python, Django, Core Java, and modern web technologies. Currently training at YuSa Infotech, 
+            I build real-world applications with clean, efficient, and scalable code.
           </p>
         </motion.div>
 

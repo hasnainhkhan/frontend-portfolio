@@ -23,9 +23,9 @@ const HeroSection = () => {
           transition={{ delay: 0.4, duration: 0.6 }}
           className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6"
         >
-          <span className="text-gradient">Web Developer</span>
+          <span className="text-gradient">Hasnain Haidar</span>
           <br />
-          <span className="text-foreground">& Creative Coder</span>
+          <span className="text-foreground text-3xl md:text-5xl lg:text-6xl">Full Stack Developer</span>
         </motion.h1>
 
         <motion.p
@@ -34,8 +34,8 @@ const HeroSection = () => {
           transition={{ delay: 0.6 }}
           className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          I build modern, performant web experiences with clean code and thoughtful design. 
-          Passionate about turning ideas into reality.
+          Building scalable web applications with Python, Django, Java & Spring Boot. 
+          Passionate about AI tools, automation, and turning complex problems into clean solutions.
         </motion.p>
 
         <motion.div
@@ -59,13 +59,15 @@ const HeroSection = () => {
           className="flex items-center justify-center gap-6"
         >
           {[
-            { icon: Github, href: "#", label: "GitHub" },
-            { icon: Linkedin, href: "#", label: "LinkedIn" },
-            { icon: Mail, href: "#", label: "Email" },
+            { icon: Github, href: "https://github.com/Hasnainhai", label: "GitHub" },
+            { icon: Linkedin, href: "https://www.linkedin.com/in/hasnainhaidar/", label: "LinkedIn" },
+            { icon: Mail, href: "mailto:contact@hasnainhaidar.dev", label: "Email" },
           ].map(({ icon: Icon, href, label }) => (
             <a
               key={label}
               href={href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-3 rounded-full border border-border text-muted-foreground hover:text-primary hover:border-primary/50 transition-all"
               aria-label={label}
             >
