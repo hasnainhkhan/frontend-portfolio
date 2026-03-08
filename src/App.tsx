@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Connect from "./pages/Connect";
 import NotFound from "./pages/NotFound";
 import ThemeSwitcher from "./components/ThemeSwitcher";
+import Chatbot from "./components/Chatbot";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +17,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <ThemeSwitcher />
+      <Chatbot />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
