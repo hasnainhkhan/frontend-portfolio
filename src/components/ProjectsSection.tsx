@@ -1,7 +1,8 @@
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, Upload, X } from "lucide-react";
 
-const projects = [
+const defaultProjects = [
   {
     title: "Microservices Architecture",
     desc: "RESTful Microservices built with Java and Spring Boot, demonstrating scalable service-oriented architecture patterns.",
@@ -33,6 +34,25 @@ const projects = [
 ];
 
 const ProjectsSection = () => {
+  const [projects, setProjects] = useState(defaultProjects);
+  const fileInputRefs = useRef<Record<number, HTMLInputElement | null>>({});
+
+  const handleImageUpload = (index: number, file: File) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const newProjects = [...projects];
+      newProjects[index] = { ...newProjects[index], image: e.target?.result as string };
+      setProjects(newProjects);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const resetImage = (index: number) => {
+    const newProjects = [...projects];
+    newProjects[index] = { ...newProjects[index], image: defaultProjects[index].image };
+    setProjects(newProjects);
+  };
+
   return (
     <section id="projects" className="py-32 px-6">
       <div className="max-w-6xl mx-auto">
@@ -66,7 +86,35 @@ const ProjectsSection = () => {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-background/40 group-hover:bg-background/20 transition-colors duration-500" />
-                <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                
+                {/* Upload overlay */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <input
+                    ref={(el) => { fileInputRefs.current[i] = el; }}
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) handleImageUpload(i, file);
+                    }}
+                  />
+                  <button
+                    onClick={() => fileInputRefs.current[i]?.click()}
+                    className="p-2 rounded-full bg-background/80 backdrop-blur text-foreground hover:text-primary transition-colors mr-2"
+                    title="Upload project image"
+                  >
+                    <Upload className="w-4 h-4" />
+                  </button>
+                  {project.image !== defaultProjects[i]?.image && (
+                    <button
+                      onClick={() => resetImage(i)}
+                      className="p-2 rounded-full bg-background/80 backdrop-blur text-foreground hover:text-destructive transition-colors mr-2"
+                      title="Reset to default"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  )}
                   <a href={project.github} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-background/80 backdrop-blur text-foreground hover:text-primary transition-colors">
                     <Github className="w-4 h-4" />
                   </a>
