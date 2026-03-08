@@ -8,7 +8,7 @@ const faq = [
   { q: "What is your highest qualification?", a: "I hold a Bachelor's degree in Computer Science (B.Tech/BCA). I'm constantly learning and upskilling through online courses and hands-on projects." },
   { q: "What is your current location?", a: "I'm currently based in Lucknow, India." },
   { q: "Can you relocate?", a: "Yes, I'm open to relocation — anywhere in India works for me!" },
-  { q: "What tech stack do you work with?", a: "I primarily work with React, TypeScript, Tailwind CSS, Node.js, and modern frontend tools. I'm always eager to learn new technologies." },
+  { q: "What tech stack do you work with?", a: "I work with React, TypeScript, JavaScript, Java, Spring Boot, Spring Security, JPA, JDBC, MySQL, PostgreSQL on the backend. For frontend I use React with modern tooling. I'm also experienced with Git/GitHub, Azure, AWS, VS Code, and related dev tools." },
   { q: "Are you open to freelance work?", a: "Absolutely! I'm open to freelance projects, collaborations, and full-time opportunities. Feel free to reach out!" },
 ];
 
