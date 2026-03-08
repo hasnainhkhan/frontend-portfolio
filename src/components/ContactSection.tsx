@@ -37,14 +37,14 @@ const ContactSection = () => {
               <Mail className="w-5 h-5 text-primary mt-0.5" />
               <div>
                 <p className="font-semibold text-sm">Email</p>
-                <a href="mailto:hasnainhaidar@example.com" className="text-muted-foreground text-sm hover:text-primary transition-colors">hasnainhaidar@example.com</a>
+                <a href="mailto:hhk2170@gmail.com" className="text-muted-foreground text-sm hover:text-primary transition-colors">hhk2170@gmail.com</a>
               </div>
             </div>
             <div className="glass rounded-xl p-6 flex items-start gap-4">
               <MapPin className="w-5 h-5 text-primary mt-0.5" />
               <div>
                 <p className="font-semibold text-sm">Location</p>
-                <p className="text-muted-foreground text-sm">Lucknow, Uttar Pradesh, India</p>
+                <p className="text-muted-foreground text-sm">Lucknow, India</p>
               </div>
             </div>
           </div>

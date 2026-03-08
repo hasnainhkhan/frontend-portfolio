@@ -3,28 +3,32 @@ import { ExternalLink, Github } from "lucide-react";
 
 const projects = [
   {
-    title: "Django E-Commerce Platform",
-    desc: "A full-featured online store built with Django, featuring user authentication, product catalog, cart system, and payment integration.",
-    tags: ["Python", "Django", "MySQL", "Bootstrap"],
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
+    title: "Microservices Architecture",
+    desc: "RESTful Microservices built with Java and Spring Boot, demonstrating scalable service-oriented architecture patterns.",
+    tags: ["Java", "Spring Boot", "Microservices", "REST API"],
+    github: "https://github.com/hasnainhkhan/Microservices",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop",
   },
   {
-    title: "Spring Boot REST API",
-    desc: "A scalable RESTful API service built with Spring Boot for managing enterprise-level data with authentication and role-based access.",
-    tags: ["Java", "Spring Boot", "REST API", "MySQL"],
+    title: "Spring Boot Backend",
+    desc: "A collection of Spring Boot backend projects showcasing authentication, CRUD operations, and enterprise patterns.",
+    tags: ["Java", "Spring Boot", "PostgreSQL", "REST API"],
+    github: "https://github.com/hasnainhkhan/SpringBootBackend",
     image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop",
   },
   {
-    title: "AI-Powered Automation Tool",
-    desc: "An automation tool leveraging AI APIs to streamline repetitive tasks, data processing, and workflow optimization.",
-    tags: ["Python", "AI Tools", "Automation", "REST APIs"],
+    title: "Schedula Backend (PearlThoughts)",
+    desc: "Production backend system with custom session module using AWS DynamoDB, appointment & leave workflows, and WhatsApp notifications.",
+    tags: ["Java", "AWS", "DynamoDB", "PostgreSQL"],
+    github: "#",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop",
   },
   {
-    title: "Task Management Web App",
-    desc: "A collaborative task manager with real-time updates, user roles, and an intuitive dashboard built with Django and React.",
-    tags: ["Django", "React", "PostgreSQL", "Tailwind CSS"],
-    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
+    title: "JavaScript Tutorials",
+    desc: "Comprehensive JavaScript tutorials and projects covering core concepts, DOM manipulation, and modern ES6+ features.",
+    tags: ["JavaScript", "HTML", "CSS", "Web Dev"],
+    github: "https://github.com/hasnainhkhan/Java_Script",
+    image: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=600&h=400&fit=crop",
   },
 ];
 
@@ -63,11 +67,8 @@ const ProjectsSection = () => {
                 />
                 <div className="absolute inset-0 bg-background/40 group-hover:bg-background/20 transition-colors duration-500" />
                 <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <a href="#" className="p-2 rounded-full bg-background/80 backdrop-blur text-foreground hover:text-primary transition-colors">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-background/80 backdrop-blur text-foreground hover:text-primary transition-colors">
                     <Github className="w-4 h-4" />
-                  </a>
-                  <a href="#" className="p-2 rounded-full bg-background/80 backdrop-blur text-foreground hover:text-primary transition-colors">
-                    <ExternalLink className="w-4 h-4" />
                   </a>
                 </div>
               </div>

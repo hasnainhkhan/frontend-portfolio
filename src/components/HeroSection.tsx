@@ -25,7 +25,7 @@ const HeroSection = () => {
         >
           <span className="text-gradient">Hasnain Haidar</span>
           <br />
-          <span className="text-foreground text-3xl md:text-5xl lg:text-6xl">Full Stack Developer</span>
+          <span className="text-foreground text-3xl md:text-5xl lg:text-6xl">Backend Engineer</span>
         </motion.h1>
 
         <motion.p
@@ -34,8 +34,8 @@ const HeroSection = () => {
           transition={{ delay: 0.6 }}
           className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          Building scalable web applications with Python, Django, Java & Spring Boot. 
-          Passionate about AI tools, automation, and turning complex problems into clean solutions.
+          B.Tech graduate building scalable backend services with Java & Spring Boot. 
+          Passionate about production systems, debugging, and cloud-aware development.
         </motion.p>
 
         <motion.div
@@ -59,9 +59,9 @@ const HeroSection = () => {
           className="flex items-center justify-center gap-6"
         >
           {[
-            { icon: Github, href: "https://github.com/Hasnainhai", label: "GitHub" },
+            { icon: Github, href: "https://github.com/hasnainhkhan", label: "GitHub" },
             { icon: Linkedin, href: "https://www.linkedin.com/in/hasnainhaidar/", label: "LinkedIn" },
-            { icon: Mail, href: "mailto:contact@hasnainhaidar.dev", label: "Email" },
+            { icon: Mail, href: "mailto:hhk2170@gmail.com", label: "Email" },
           ].map(({ icon: Icon, href, label }) => (
             <a
               key={label}
