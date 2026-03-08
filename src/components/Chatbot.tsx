@@ -144,7 +144,14 @@ const Chatbot = () => {
                   placeholder="Type a question..."
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  className="flex-1 px-4 py-2.5 rounded-xl bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm"
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      handleSend();
+                    }
+                  }}
+                  className="flex-1 px-4 py-2.5 rounded-xl bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm"
+                  style={{ color: 'inherit' }}
                 />
                 <button
                   type="submit"
