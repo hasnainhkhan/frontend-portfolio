@@ -60,7 +60,6 @@ const HeroSection = () => {
         >
           {[
             { icon: Github, href: "https://github.com/hasnainhkhan", label: "GitHub" },
-            { icon: Linkedin, href: "https://www.linkedin.com/in/hasnainhaidar/", label: "LinkedIn" },
             { icon: Mail, href: "mailto:hhk2170@gmail.com", label: "Email" },
           ].map(({ icon: Icon, href, label }) => (
             <a
@@ -74,6 +73,15 @@ const HeroSection = () => {
               <Icon className="w-5 h-5" />
             </a>
           ))}
+          <a
+            href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=hasnainhaidar"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-5 py-2 rounded-full bg-[#0A66C2] text-white text-sm font-medium hover:bg-[#004182] transition-colors"
+          >
+            <Linkedin className="w-4 h-4" />
+            Follow on LinkedIn
+          </a>
         </motion.div>
       </div>
 
