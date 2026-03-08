@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Instagram, Mail, Download, ArrowLeft, Send, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { toast } from "sonner";
 
 const socials = [
   {
