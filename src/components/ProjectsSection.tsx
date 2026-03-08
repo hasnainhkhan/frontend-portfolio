@@ -3,28 +3,28 @@ import { ExternalLink, Github } from "lucide-react";
 
 const projects = [
   {
-    title: "E-Commerce Platform",
-    desc: "A full-featured online store with cart, checkout, and payment integration built with React and Node.js.",
-    tags: ["React", "Node.js", "Stripe", "MongoDB"],
+    title: "Django E-Commerce Platform",
+    desc: "A full-featured online store built with Django, featuring user authentication, product catalog, cart system, and payment integration.",
+    tags: ["Python", "Django", "MySQL", "Bootstrap"],
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
   },
   {
-    title: "Task Management App",
-    desc: "A collaborative project management tool with real-time updates, drag-and-drop, and team features.",
-    tags: ["TypeScript", "React", "Supabase", "Tailwind"],
+    title: "Spring Boot REST API",
+    desc: "A scalable RESTful API service built with Spring Boot for managing enterprise-level data with authentication and role-based access.",
+    tags: ["Java", "Spring Boot", "REST API", "MySQL"],
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop",
+  },
+  {
+    title: "AI-Powered Automation Tool",
+    desc: "An automation tool leveraging AI APIs to streamline repetitive tasks, data processing, and workflow optimization.",
+    tags: ["Python", "AI Tools", "Automation", "REST APIs"],
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop",
+  },
+  {
+    title: "Task Management Web App",
+    desc: "A collaborative task manager with real-time updates, user roles, and an intuitive dashboard built with Django and React.",
+    tags: ["Django", "React", "PostgreSQL", "Tailwind CSS"],
     image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
-  },
-  {
-    title: "Portfolio Dashboard",
-    desc: "An analytics dashboard with interactive charts, data visualization, and responsive design.",
-    tags: ["React", "D3.js", "REST API", "CSS Grid"],
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
-  },
-  {
-    title: "Social Media Clone",
-    desc: "A social platform with real-time messaging, feed algorithms, and media sharing capabilities.",
-    tags: ["Next.js", "PostgreSQL", "WebSocket", "AWS"],
-    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&h=400&fit=crop",
   },
 ];
 

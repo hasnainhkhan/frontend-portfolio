@@ -7,7 +7,6 @@ const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
     console.log("Form submitted:", formData);
   };
 
@@ -24,7 +23,7 @@ const ContactSection = () => {
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
             Let's <span className="text-gradient">Connect</span>
           </h2>
-          <p className="text-muted-foreground text-lg">Have a project in mind? I'd love to hear from you.</p>
+          <p className="text-muted-foreground text-lg">Have a project in mind? Let's build something great together.</p>
         </motion.div>
 
         <motion.div
@@ -38,14 +37,14 @@ const ContactSection = () => {
               <Mail className="w-5 h-5 text-primary mt-0.5" />
               <div>
                 <p className="font-semibold text-sm">Email</p>
-                <p className="text-muted-foreground text-sm">hello@example.com</p>
+                <a href="mailto:hasnainhaidar@example.com" className="text-muted-foreground text-sm hover:text-primary transition-colors">hasnainhaidar@example.com</a>
               </div>
             </div>
             <div className="glass rounded-xl p-6 flex items-start gap-4">
               <MapPin className="w-5 h-5 text-primary mt-0.5" />
               <div>
                 <p className="font-semibold text-sm">Location</p>
-                <p className="text-muted-foreground text-sm">Available Worldwide</p>
+                <p className="text-muted-foreground text-sm">Lucknow, Uttar Pradesh, India</p>
               </div>
             </div>
           </div>
