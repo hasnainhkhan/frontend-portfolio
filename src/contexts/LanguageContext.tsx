@@ -119,6 +119,11 @@ const translations: Record<Language, Record<string, string>> = {
     "a11y.enabled": "Accessibility mode enabled - Hover over text to listen",
     "a11y.disabled": "Accessibility mode disabled",
     "a11y.notSupported": "Text-to-speech not supported in your browser",
+
+    // Introduction
+    "intro.btn": "Listen to Introduction",
+    "intro.btnStop": "Stop",
+    "intro.text": "Hi, I'm Hasnain Haidar, a Computer Science graduate and an aspiring Backend Developer with a strong interest in building scalable web applications. I have hands-on experience working with Java, Spring Boot, REST APIs, and databases like MySQL and PostgreSQL. During my internship, I worked on backend development tasks such as debugging APIs, resolving CORS and configuration issues, and integrating cloud services like AWS Lambda and DynamoDB. I enjoy learning new technologies, solving technical problems, and building practical projects that improve my development skills. As a fresher, I am looking for an opportunity where I can contribute to real-world projects, learn from experienced developers, and grow as a backend engineer.",
   },
   ur: {
     "nav.about": "میرے بارے میں",
@@ -202,6 +207,10 @@ const translations: Record<Language, Record<string, string>> = {
     "a11y.enabled": "قابل رسائی موڈ فعال - سننے کے لیے متن پر ہوور کریں",
     "a11y.disabled": "قابل رسائی موڈ غیر فعال",
     "a11y.notSupported": "ٹیکسٹ ٹو اسپیچ آپ کے براؤزر میں تعاون یافتہ نہیں",
+
+    "intro.btn": "تعارف سنیں",
+    "intro.btnStop": "رکیں",
+    "intro.text": "ہیلو، میں حسنین حیدر ہوں، کمپیوٹر سائنس گریجویٹ اور ایک خواہشمند بیک اینڈ ڈیولپر ہوں جو اسکیل ایبل ویب ایپلیکیشنز بنانے میں گہری دلچسپی رکھتا ہے۔ مجھے جاوا، سپرنگ بوٹ، REST APIs، اور MySQL اور PostgreSQL جیسے ڈیٹا بیسز کے ساتھ عملی تجربہ ہے۔ اپنی انٹرنشپ کے دوران، میں نے بیک اینڈ ڈیولپمنٹ کے کاموں پر کام کیا جیسے APIs کی ڈیبگنگ، CORS اور کنفیگریشن مسائل کو حل کرنا، اور AWS Lambda اور DynamoDB جیسی کلاؤڈ سروسز کو انٹیگریٹ کرنا۔ میں نئی ٹیکنالوجیز سیکھنا، تکنیکی مسائل حل کرنا، اور عملی پروجیکٹس بنانا پسند کرتا ہوں۔ ایک فریشر کے طور پر، میں ایسے موقع کی تلاش میں ہوں جہاں میں حقیقی پروجیکٹس میں حصہ ڈال سکوں اور بیک اینڈ انجینئر کے طور پر ترقی کر سکوں۔",
   },
   ar: {
     "nav.about": "عني",
@@ -285,6 +294,10 @@ const translations: Record<Language, Record<string, string>> = {
     "a11y.enabled": "تم تفعيل وضع إمكانية الوصول - مرر فوق النص للاستماع",
     "a11y.disabled": "تم تعطيل وضع إمكانية الوصول",
     "a11y.notSupported": "تحويل النص إلى كلام غير مدعوم في متصفحك",
+
+    "intro.btn": "استمع إلى المقدمة",
+    "intro.btnStop": "توقف",
+    "intro.text": "مرحبًا، أنا حسنين حيدر، خريج علوم الحاسب ومطور خلفية طموح لدي اهتمام قوي ببناء تطبيقات ويب قابلة للتوسع. لدي خبرة عملية في العمل مع Java و Spring Boot و REST APIs وقواعد البيانات مثل MySQL و PostgreSQL. خلال فترة تدريبي، عملت على مهام تطوير الخلفية مثل تصحيح أخطاء APIs وحل مشاكل CORS والتكوين ودمج خدمات السحابة مثل AWS Lambda و DynamoDB. أستمتع بتعلم التقنيات الجديدة وحل المشاكل التقنية وبناء مشاريع عملية. كمبتدئ، أبحث عن فرصة يمكنني فيها المساهمة في مشاريع حقيقية والنمو كمهندس خلفية.",
   },
   hi: {
     "nav.about": "मेरे बारे में",
@@ -368,6 +381,10 @@ const translations: Record<Language, Record<string, string>> = {
     "a11y.enabled": "एक्सेसिबिलिटी मोड सक्षम - सुनने के लिए टेक्स्ट पर होवर करें",
     "a11y.disabled": "एक्सेसिबिलिटी मोड अक्षम",
     "a11y.notSupported": "टेक्स्ट-टू-स्पीच आपके ब्राउज़र में समर्थित नहीं है",
+
+    "intro.btn": "परिचय सुनें",
+    "intro.btnStop": "रुकें",
+    "intro.text": "नमस्ते, मैं हसनैन हैदर हूं, कंप्यूटर साइंस ग्रेजुएट और एक महत्वाकांक्षी बैकएंड डेवलपर हूं जिसकी स्केलेबल वेब एप्लिकेशन बनाने में गहरी रुचि है। मुझे Java, Spring Boot, REST APIs, और MySQL और PostgreSQL जैसे डेटाबेस के साथ व्यावहारिक अनुभव है। अपनी इंटर्नशिप के दौरान, मैंने बैकएंड डेवलपमेंट कार्यों पर काम किया जैसे APIs की डिबगिंग, CORS और कॉन्फ़िगरेशन समस्याओं को हल करना, और AWS Lambda और DynamoDB जैसी क्लाउड सेवाओं को एकीकृत करना। मुझे नई तकनीकें सीखना, तकनीकी समस्याएं हल करना, और व्यावहारिक प्रोजेक्ट बनाना पसंद है। एक फ्रेशर के रूप में, मैं ऐसे अवसर की तलाश में हूं जहां मैं वास्तविक प्रोजेक्ट्स में योगदान दे सकूं और बैकएंड इंजीनियर के रूप में विकसित हो सकूं।",
   },
 };
 

@@ -1,9 +1,29 @@
+import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Code2, Bug, Cloud } from "lucide-react";
+import { Code2, Bug, Cloud, Volume2, VolumeX } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const AboutSection = () => {
-  const { t } = useLanguage();
+  const { t, speechLang } = useLanguage();
+  const [isSpeaking, setIsSpeaking] = useState(false);
+
+  const speakIntroduction = useCallback(() => {
+    if (isSpeaking) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+      return;
+    }
+
+    const text = t("intro.text");
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = speechLang;
+    utterance.rate = 0.9;
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = () => setIsSpeaking(false);
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utterance);
+    setIsSpeaking(true);
+  }, [t, speechLang, isSpeaking]);
 
   const highlights = [
     { icon: Code2, title: t("about.card1.title"), desc: t("about.card1.desc") },
@@ -24,9 +44,25 @@ const AboutSection = () => {
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
             {t("about.heading1")}<span className="text-gradient">{t("about.heading2")}</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
+          <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed mb-6">
             {t("about.desc")}
           </p>
+          <button
+            onClick={speakIntroduction}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors font-medium text-sm border border-primary/20"
+          >
+            {isSpeaking ? (
+              <>
+                <VolumeX className="w-4 h-4 animate-pulse" />
+                {t("intro.btnStop")}
+              </>
+            ) : (
+              <>
+                <Volume2 className="w-4 h-4" />
+                {t("intro.btn")}
+              </>
+            )}
+          </button>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-6">
