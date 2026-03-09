@@ -36,9 +36,7 @@ const Navbar = () => {
         key={link.label}
         to={link.href}
         onClick={onClick}
-        className={`text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 ${
-          link.icon ? 'text-primary font-medium' : ''
-        }`}
+        className="text-sm text-primary font-medium hover:text-primary/80 transition-colors flex items-center gap-1"
       >
         {Icon && <Icon className="h-3.5 w-3.5" />}
         {link.label}
