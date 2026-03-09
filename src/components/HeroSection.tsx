@@ -14,8 +14,8 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="font-mono text-sm text-primary tracking-widest uppercase mb-6"
-        >
+          className="font-mono text-sm text-primary tracking-widest uppercase mb-6">
+          
           {t("hero.greeting")}
         </motion.p>
 
@@ -23,19 +23,19 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6"
-        >
-          <span className="text-gradient">Hasnain Haidar</span>
+          className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6">
+          
+          <span className="text-gradient text-6xl font-mono font-bold">Hasnain Haidar</span>
           <br />
-          <span className="text-foreground text-3xl md:text-5xl lg:text-6xl">{t("hero.role")}</span>
+          <span className="text-foreground text-3xl md:text-5xl font-mono font-semibold lg:text-5xl">{t("hero.role")}</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
-        >
+          className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+          
           {t("hero.desc")}
         </motion.p>
 
@@ -43,12 +43,12 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
-          className="flex items-center justify-center gap-4 mb-16"
-        >
-          <a href="#projects" className="px-8 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity glow-box">
+          className="flex items-center justify-center gap-4 mb-16">
+          
+          <a href="#projects" className="px-8 py-3 rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity glow-box font-normal">
             {t("hero.viewProjects")}
           </a>
-          <a href="#contact" className="px-8 py-3 rounded-lg border border-border text-foreground hover:bg-secondary transition-colors">
+          <a href="#contact" className="px-8 py-3 rounded-lg border border-border text-foreground hover:bg-secondary transition-colors font-normal">
             {t("hero.getInTouch")}
           </a>
         </motion.div>
@@ -57,29 +57,29 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
-          className="flex items-center justify-center gap-6"
-        >
+          className="flex items-center justify-center gap-6">
+          
           {[
-            { icon: Github, href: "https://github.com/hasnainhkhan", label: "GitHub" },
-            { icon: Mail, href: "mailto:hhk2170@gmail.com", label: "Email" },
-          ].map(({ icon: Icon, href, label }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full border border-border text-muted-foreground hover:text-primary hover:border-primary/50 transition-all"
-              aria-label={label}
-            >
+          { icon: Github, href: "https://github.com/hasnainhkhan", label: "GitHub" },
+          { icon: Mail, href: "mailto:hhk2170@gmail.com", label: "Email" }].
+          map(({ icon: Icon, href, label }) =>
+          <a
+            key={label}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 rounded-full border border-border text-muted-foreground hover:text-primary hover:border-primary/50 transition-all"
+            aria-label={label}>
+            
               <Icon className="w-5 h-5" />
             </a>
-          ))}
+          )}
           <a
             href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=hasnainhaidar"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-5 py-2 rounded-full bg-[#0A66C2] text-white text-sm font-medium hover:bg-[#004182] transition-colors"
-          >
+            className="flex items-center gap-2 px-5 py-2 bg-[#0A66C2] text-white text-sm font-medium hover:bg-[#004182] transition-colors rounded-md opacity-50">
+            
             <Linkedin className="w-4 h-4" />
             {t("hero.followLinkedIn")}
           </a>
@@ -90,14 +90,14 @@ const HeroSection = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
-      >
+        className="absolute bottom-10 left-1/2 -translate-x-1/2">
+        
         <a href="#about" className="text-muted-foreground hover:text-primary transition-colors">
           <ArrowDown className="w-5 h-5 animate-bounce" />
         </a>
       </motion.div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default HeroSection;
