@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Connect from "./pages/Connect";
 import PdfReaderPage from "./pages/PdfReaderPage";
 import ResumeBuilder from "./pages/ResumeBuilder";
+import EmailTemplateGenerator from "./pages/EmailTemplateGenerator";
 import NotFound from "./pages/NotFound";
 import ThemeSwitcher from "./components/ThemeSwitcher";
 import Chatbot from "./components/Chatbot";
