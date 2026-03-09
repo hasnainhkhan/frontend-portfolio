@@ -16,8 +16,9 @@ const Navbar = () => {
     { label: t("nav.skills"), href: "#skills" },
     { label: t("nav.certifications"), href: "#certifications" },
     { label: t("nav.contact"), href: "#contact" },
-    { label: t("nav.connect"), href: "/connect", isRoute: true },
+    { label: t("nav.connect"), href: "/connect", isRoute: true, icon: UserCheck },
     { label: "Resume Builder", href: "/resume-builder", isRoute: true, icon: FileText },
+    { label: "Email Templates", href: "/email-templates", isRoute: true, icon: Mail },
     { label: t("pdf.heading1") + t("pdf.heading2"), href: "/pdf-reader", isRoute: true, icon: Volume2 },
   ];
 

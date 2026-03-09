@@ -31,6 +31,7 @@ const AppContent = () => {
           <Route path="/connect" element={<Connect />} />
           <Route path="/pdf-reader" element={<PdfReaderPage />} />
           <Route path="/resume-builder" element={<ResumeBuilder />} />
+          <Route path="/email-templates" element={<EmailTemplateGenerator />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
