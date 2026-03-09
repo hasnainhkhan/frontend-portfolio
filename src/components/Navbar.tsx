@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -12,12 +13,34 @@ const navLinks = [
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const renderLink = (link: typeof navLinks[0], onClick?: () => void) =>
+    link.isRoute ? (
+      <Link
+        key={link.label}
+        to={link.href}
+        onClick={onClick}
+        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+      >
+        {link.label}
+      </Link>
+    ) : (
+      <a
+        key={link.label}
+        href={link.href}
+        onClick={onClick}
+        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+      >
+        {link.label}
+      </a>
+    );
 
   return (
     <motion.nav
@@ -33,33 +56,39 @@ const Navbar = () => {
           {"<HH />"}
         </a>
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) =>
-            (link as any).isRoute ? (
-              <Link
-                key={link.label}
-                to={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {link.label}
-              </Link>
-            ) : (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {link.label}
-              </a>
-            )
-          )}
+          {navLinks.map((link) => renderLink(link))}
         </div>
-        <a
-          href="#contact"
-          className="px-5 py-2 rounded-lg border border-primary/30 text-primary text-sm hover:bg-primary/10 transition-colors"
-        >
-          Hire Me
-        </a>
+        <div className="flex items-center gap-3">
+          <a
+            href="#contact"
+            className="px-5 py-2 rounded-lg border border-primary/30 text-primary text-sm hover:bg-primary/10 transition-colors"
+          >
+            Hire Me
+          </a>
+          <button
+            className="md:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
+
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden glass mt-2 mx-4 rounded-xl overflow-hidden"
+          >
+            <div className="flex flex-col gap-4 p-6">
+              {navLinks.map((link) => renderLink(link, () => setMobileOpen(false)))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };
