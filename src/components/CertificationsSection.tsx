@@ -11,22 +11,28 @@ interface Certification {
 
 const certifications: Certification[] = [
   {
-    title: "AWS Certified Cloud Practitioner",
-    issuer: "Amazon Web Services",
+    title: "LinkedIn Learning Certificate",
+    issuer: "LinkedIn Learning",
     date: "2024",
-    credentialUrl: "#",
+    credentialUrl: "https://www.linkedin.com/learning/certificates/1f8420ddc2b80dfc22a2d9e5ce50ae491d4c774aee3befb65a3b0f275baaf5ff",
   },
   {
-    title: "Java SE 11 Developer",
-    issuer: "Oracle",
+    title: "LinkedIn Learning Certificate",
+    issuer: "LinkedIn Learning",
     date: "2024",
-    credentialUrl: "#",
+    credentialUrl: "https://www.linkedin.com/learning/certificates/e163a0981fc2b32e648630a33840bdae2d06a534778efc833b73005fb243763b",
   },
   {
-    title: "Spring Professional Certification",
-    issuer: "VMware",
-    date: "2023",
-    credentialUrl: "#",
+    title: "JavaScript (Basic)",
+    issuer: "HackerRank",
+    date: "2024",
+    credentialUrl: "https://www.hackerrank.com/certificates/5e273a859161",
+  },
+  {
+    title: "SQL (Basic)",
+    issuer: "HackerRank",
+    date: "2024",
+    credentialUrl: "https://www.hackerrank.com/certificates/3b8ea26ad931",
   },
 ];
 
