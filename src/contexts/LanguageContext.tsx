@@ -119,6 +119,11 @@ const translations: Record<Language, Record<string, string>> = {
     "a11y.enabled": "Accessibility mode enabled - Hover over text to listen",
     "a11y.disabled": "Accessibility mode disabled",
     "a11y.notSupported": "Text-to-speech not supported in your browser",
+
+    // Introduction
+    "intro.btn": "Listen to Introduction",
+    "intro.btnStop": "Stop",
+    "intro.text": "Hi, I'm Hasnain Haidar, a Computer Science graduate and an aspiring Backend Developer with a strong interest in building scalable web applications. I have hands-on experience working with Java, Spring Boot, REST APIs, and databases like MySQL and PostgreSQL. During my internship, I worked on backend development tasks such as debugging APIs, resolving CORS and configuration issues, and integrating cloud services like AWS Lambda and DynamoDB. I enjoy learning new technologies, solving technical problems, and building practical projects that improve my development skills. As a fresher, I am looking for an opportunity where I can contribute to real-world projects, learn from experienced developers, and grow as a backend engineer.",
   },
   ur: {
     "nav.about": "میرے بارے میں",
