@@ -17,6 +17,7 @@ const Navbar = () => {
     { label: t("nav.certifications"), href: "#certifications" },
     { label: t("nav.contact"), href: "#contact" },
     { label: t("nav.connect"), href: "/connect", isRoute: true },
+    { label: t("pdf.heading1") + t("pdf.heading2"), href: "/pdf-reader", isRoute: true, icon: true },
   ];
 
   useEffect(() => {
