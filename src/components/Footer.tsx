@@ -1,11 +1,14 @@
 import { Github, Linkedin, Mail } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
+  const { t } = useLanguage();
+
   return (
     <footer className="border-t border-border py-12 px-6">
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <p className="text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Hasnain Haidar — Built with passion & code
+          © {new Date().getFullYear()} Hasnain Haidar — {t("footer.text")}
         </p>
         <div className="flex items-center gap-4">
           {[

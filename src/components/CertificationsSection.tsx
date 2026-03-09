@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import { Award, ExternalLink } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Certification {
   title: string;
   issuer: string;
   date: string;
   credentialUrl?: string;
-  badge?: string;
 }
 
 const certifications: Certification[] = [
@@ -37,6 +37,8 @@ const certifications: Certification[] = [
 ];
 
 const CertificationsSection = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="certifications" className="py-32 px-6">
       <div className="max-w-5xl mx-auto">
@@ -47,17 +49,17 @@ const CertificationsSection = () => {
           className="mb-16"
         >
           <p className="font-mono text-sm text-primary tracking-widest uppercase mb-3">
-            Certifications
+            {t("certs.label")}
           </p>
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Credentials that <span className="text-gradient">validate expertise</span>
+            {t("certs.heading1")}<span className="text-gradient">{t("certs.heading2")}</span>
           </h2>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {certifications.map((cert, i) => (
             <motion.div
-              key={cert.title}
+              key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -70,14 +72,14 @@ const CertificationsSection = () => {
               <h3 className="text-lg font-semibold mb-1">{cert.title}</h3>
               <p className="text-muted-foreground text-sm mb-1">{cert.issuer}</p>
               <p className="text-muted-foreground/60 text-xs font-mono">{cert.date}</p>
-              {cert.credentialUrl && cert.credentialUrl !== "#" && (
+              {cert.credentialUrl && (
                 <a
                   href={cert.credentialUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-4 inline-flex items-center gap-1.5 text-primary text-sm hover:underline"
                 >
-                  View Credential <ExternalLink className="w-3.5 h-3.5" />
+                  {t("certs.viewCredential")} <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               )}
             </motion.div>

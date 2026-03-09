@@ -2,60 +2,58 @@ import { useState, useEffect } from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const AccessibilityButton = () => {
   const [isEnabled, setIsEnabled] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const { t, speechLang } = useLanguage();
 
   useEffect(() => {
     if (!isEnabled) return;
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      
-      // Get text content from the element
       const text = target.textContent?.trim();
-      
+
       if (text && text.length > 0 && 'speechSynthesis' in window) {
-        // Cancel any ongoing speech
         window.speechSynthesis.cancel();
-        
-        // Create new speech utterance
+
         const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = speechLang;
         utterance.rate = 1;
         utterance.pitch = 1;
         utterance.volume = 1;
-        
+
         utterance.onstart = () => setIsSpeaking(true);
         utterance.onend = () => setIsSpeaking(false);
         utterance.onerror = () => setIsSpeaking(false);
-        
+
         window.speechSynthesis.speak(utterance);
       }
     };
 
-    // Add listener to document
     document.addEventListener('mouseover', handleMouseOver);
 
     return () => {
       document.removeEventListener('mouseover', handleMouseOver);
       window.speechSynthesis.cancel();
     };
-  }, [isEnabled]);
+  }, [isEnabled, speechLang]);
 
   const toggleAccessibility = () => {
     if (!('speechSynthesis' in window)) {
-      toast.error('Text-to-speech not supported in your browser');
+      toast.error(t('a11y.notSupported'));
       return;
     }
 
     const newState = !isEnabled;
     setIsEnabled(newState);
-    
+
     if (newState) {
-      toast.success('Accessibility mode enabled - Hover over text to listen');
+      toast.success(t('a11y.enabled'));
     } else {
-      toast.info('Accessibility mode disabled');
+      toast.info(t('a11y.disabled'));
       window.speechSynthesis.cancel();
     }
   };
