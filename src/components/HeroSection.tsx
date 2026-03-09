@@ -8,6 +8,14 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6">
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[120px] pointer-events-none" />
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" className="absolute inset-0 w-full h-full pointer-events-none select-none" preserveAspectRatio="xMidYMid slice">
+        <g transform="rotate(-20 400 200)">
+          <text x="50%" y="55%" textAnchor="middle" fontSize="90" fontFamily="'Brush Script MT', cursive" className="fill-foreground" opacity="0.06">
+            Hasnain Haidar
+          </text>
+        </g>
+      </svg>
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         <motion.p
