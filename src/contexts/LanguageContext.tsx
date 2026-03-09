@@ -40,7 +40,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Hero
     "hero.greeting": "Hello, I'm",
     "hero.role": "Backend Engineer",
-    "hero.desc": "B.Tech graduate building scalable backend services with Java & Spring Boot. Passionate about production systems, debugging, and cloud-aware development.",
+    "hero.desc": "B.Tech graduate building backend services with Java & Spring Boot. Passionate about production systems, debugging, and cloud-aware development.",
     "hero.viewProjects": "View Projects",
     "hero.getInTouch": "Get in Touch",
     "hero.followLinkedIn": "Follow on LinkedIn",
