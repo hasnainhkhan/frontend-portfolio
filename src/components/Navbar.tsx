@@ -115,6 +115,7 @@ const Navbar = () => {
               )}
             </AnimatePresence>
           </div>
+        </div>
         <div className="flex items-center gap-3">
           <LanguageSwitcher />
           <a
