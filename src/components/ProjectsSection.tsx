@@ -127,6 +127,26 @@ const ProjectsSection = () => {
     },
   ];
 
+  const [carouselRef, carouselApi] = useEmblaCarousel({ loop: true, align: "start" });
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const scrollCardPrev = useCallback(() => carouselApi?.scrollPrev(), [carouselApi]);
+  const scrollCardNext = useCallback(() => carouselApi?.scrollNext(), [carouselApi]);
+
+  const onCardSelect = useCallback(() => {
+    if (!carouselApi) return;
+    setActiveIndex(carouselApi.selectedScrollSnap());
+  }, [carouselApi]);
+
+  const cardRefCallback = useCallback(
+    (_node: HTMLDivElement | null) => {
+      if (carouselApi) {
+        carouselApi.on("select", onCardSelect);
+      }
+    },
+    [carouselApi, onCardSelect]
+  );
+
   return (
     <section id="projects" className="py-32 px-6">
       <div className="max-w-6xl mx-auto">
@@ -142,38 +162,67 @@ const ProjectsSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {defaultProjects.map((project, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="glass rounded-xl overflow-hidden group hover:glow-box transition-shadow duration-500"
-            >
-              <div className="relative">
-                <ProjectCarousel images={project.images} title={project.title} />
-                <div className="absolute inset-0 bg-background/40 group-hover:bg-background/20 transition-colors duration-500 pointer-events-none" />
-                <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-background/80 backdrop-blur text-foreground hover:text-primary transition-colors">
-                    <Github className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{project.desc}</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span key={tag} className="font-mono text-xs px-3 py-1 rounded-full bg-primary/10 text-primary">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
+        <div className="relative" ref={cardRefCallback}>
+          <div className="overflow-hidden" ref={carouselRef}>
+            <div className="flex gap-6">
+              {defaultProjects.map((project, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="flex-[0_0_100%] md:flex-[0_0_48%] min-w-0 glass rounded-xl overflow-hidden group hover:glow-box transition-shadow duration-500"
+                >
+                  <div className="relative">
+                    <ProjectCarousel images={project.images} title={project.title} />
+                    <div className="absolute inset-0 bg-background/40 group-hover:bg-background/20 transition-colors duration-500 pointer-events-none" />
+                    <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-background/80 backdrop-blur text-foreground hover:text-primary transition-colors">
+                        <Github className="w-4 h-4" />
+                      </a>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                    <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{project.desc}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <span key={tag} className="font-mono text-xs px-3 py-1 rounded-full bg-primary/10 text-primary">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Card carousel navigation */}
+          <button
+            onClick={scrollCardPrev}
+            className="absolute -left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/90 backdrop-blur border border-border text-foreground hover:text-primary transition-colors z-30 shadow-lg"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={scrollCardNext}
+            className="absolute -right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/90 backdrop-blur border border-border text-foreground hover:text-primary transition-colors z-30 shadow-lg"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
+          {/* Dots */}
+          <div className="flex justify-center gap-2 mt-6">
+            {defaultProjects.map((_, idx) => (
+              <span
+                key={idx}
+                className={`w-2.5 h-2.5 rounded-full transition-colors cursor-pointer ${idx === activeIndex ? "bg-primary" : "bg-muted-foreground/30"}`}
+                onClick={() => carouselApi?.scrollTo(idx)}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
