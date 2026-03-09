@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { MessageCircle, X, Send, Bot, User } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 type Message = { role: "bot" | "user"; text: string };
 
@@ -13,9 +14,10 @@ const faq = [
 ];
 
 const Chatbot = () => {
+  const { t } = useLanguage();
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: "bot", text: "Hey there! 👋 I'm Hasnain's assistant bot. Ask me anything or pick a question below!" },
+    { role: "bot", text: t("chatbot.greeting") },
   ]);
   const [input, setInput] = useState("");
 
@@ -47,12 +49,7 @@ const Chatbot = () => {
     setTimeout(() => {
       setMessages((prev) => [
         ...prev,
-        {
-          role: "bot",
-          text: match
-            ? match.a
-            : "Great question! For more details, feel free to reach out via email at hhk2170@gmail.com or connect on LinkedIn. 😊",
-        },
+        { role: "bot", text: match ? match.a : t("chatbot.fallback") },
       ]);
     }, 600);
   };
@@ -72,15 +69,14 @@ const Chatbot = () => {
             className="absolute bottom-16 left-0 w-[340px] sm:w-[380px] glass rounded-2xl border border-border/50 overflow-hidden flex flex-col"
             style={{ maxHeight: "70vh" }}
           >
-            {/* Header */}
             <div className="flex items-center justify-between px-5 py-4 border-b border-border/50 bg-secondary/30">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
                   <Bot className="w-4 h-4 text-primary" />
                 </div>
                 <div>
-                  <p className="font-semibold text-sm">Ask Me</p>
-                  <p className="text-xs text-muted-foreground">Quick answers about Hasnain</p>
+                  <p className="font-semibold text-sm">{t("chatbot.askMe")}</p>
+                  <p className="text-xs text-muted-foreground">{t("chatbot.quickAnswers")}</p>
                 </div>
               </div>
               <button onClick={() => setOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors">
@@ -88,7 +84,6 @@ const Chatbot = () => {
               </button>
             </div>
 
-            {/* Messages */}
             <div className="flex-1 overflow-y-auto p-4 space-y-3" style={{ maxHeight: "340px" }}>
               {messages.map((msg, i) => (
                 <div key={i} className={`flex gap-2 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
@@ -114,7 +109,6 @@ const Chatbot = () => {
                 </div>
               ))}
 
-              {/* Quick questions */}
               {unanswered.length > 0 && (
                 <div className="flex flex-wrap gap-2 pt-2">
                   {unanswered.map((f) => (
@@ -130,7 +124,6 @@ const Chatbot = () => {
               )}
             </div>
 
-            {/* Input */}
             <div className="p-3 border-t border-border/50">
               <form
                 onSubmit={(e) => {
@@ -141,15 +134,9 @@ const Chatbot = () => {
               >
                 <input
                   type="text"
-                  placeholder="Type a question..."
+                  placeholder={t("chatbot.placeholder")}
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      e.preventDefault();
-                      handleSend();
-                    }
-                  }}
                   className="flex-1 px-4 py-2.5 rounded-xl bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm"
                   style={{ color: 'inherit' }}
                 />

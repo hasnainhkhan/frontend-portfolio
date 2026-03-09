@@ -1,39 +1,42 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink, Github, Upload, X } from "lucide-react";
-
-const defaultProjects = [
-  {
-    title: "Microservices Architecture",
-    desc: "RESTful Microservices built with Java and Spring Boot, demonstrating scalable service-oriented architecture patterns.",
-    tags: ["Java", "Spring Boot", "Microservices", "REST API"],
-    github: "https://github.com/hasnainhkhan/Microservices",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop",
-  },
-  {
-    title: "Spring Boot Backend",
-    desc: "A collection of Spring Boot backend projects showcasing authentication, CRUD operations, and enterprise patterns.",
-    tags: ["Java", "Spring Boot", "PostgreSQL", "REST API"],
-    github: "https://github.com/hasnainhkhan/SpringBootBackend",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop",
-  },
-  {
-    title: "Schedula Backend (PearlThoughts)",
-    desc: "Production backend system with custom session module using AWS DynamoDB, appointment & leave workflows, and WhatsApp notifications.",
-    tags: ["Java", "AWS", "DynamoDB", "PostgreSQL"],
-    github: "#",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop",
-  },
-  {
-    title: "JavaScript Tutorials",
-    desc: "Comprehensive JavaScript tutorials and projects covering core concepts, DOM manipulation, and modern ES6+ features.",
-    tags: ["JavaScript", "HTML", "CSS", "Web Dev"],
-    github: "https://github.com/hasnainhkhan/Java_Script",
-    image: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=600&h=400&fit=crop",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ProjectsSection = () => {
+  const { t } = useLanguage();
+
+  const defaultProjects = [
+    {
+      title: t("projects.p1.title"),
+      desc: t("projects.p1.desc"),
+      tags: ["Java", "Spring Boot", "Microservices", "REST API"],
+      github: "https://github.com/hasnainhkhan/Microservices",
+      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop",
+    },
+    {
+      title: t("projects.p2.title"),
+      desc: t("projects.p2.desc"),
+      tags: ["Java", "Spring Boot", "PostgreSQL", "REST API"],
+      github: "https://github.com/hasnainhkhan/SpringBootBackend",
+      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop",
+    },
+    {
+      title: t("projects.p3.title"),
+      desc: t("projects.p3.desc"),
+      tags: ["Java", "AWS", "DynamoDB", "PostgreSQL"],
+      github: "#",
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop",
+    },
+    {
+      title: t("projects.p4.title"),
+      desc: t("projects.p4.desc"),
+      tags: ["JavaScript", "HTML", "CSS", "Web Dev"],
+      github: "https://github.com/hasnainhkhan/Java_Script",
+      image: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=600&h=400&fit=crop",
+    },
+  ];
+
   const [projects, setProjects] = useState(defaultProjects);
   const fileInputRefs = useRef<Record<number, HTMLInputElement | null>>({});
 
@@ -62,16 +65,16 @@ const ProjectsSection = () => {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <p className="font-mono text-sm text-primary tracking-widest uppercase mb-3">Portfolio</p>
+          <p className="font-mono text-sm text-primary tracking-widest uppercase mb-3">{t("projects.label")}</p>
           <h2 className="text-3xl md:text-5xl font-bold">
-            Featured <span className="text-gradient">Projects</span>
+            {t("projects.heading1")}<span className="text-gradient">{t("projects.heading2")}</span>
           </h2>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, i) => (
             <motion.div
-              key={project.title}
+              key={i}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -86,8 +89,6 @@ const ProjectsSection = () => {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-background/40 group-hover:bg-background/20 transition-colors duration-500" />
-                
-                {/* Upload overlay */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <input
                     ref={(el) => { fileInputRefs.current[i] = el; }}
