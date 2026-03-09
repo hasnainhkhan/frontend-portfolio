@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Volume2 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageSwitcher from "./LanguageSwitcher";
 
@@ -17,6 +17,7 @@ const Navbar = () => {
     { label: t("nav.certifications"), href: "#certifications" },
     { label: t("nav.contact"), href: "#contact" },
     { label: t("nav.connect"), href: "/connect", isRoute: true },
+    { label: t("pdf.heading1") + t("pdf.heading2"), href: "/pdf-reader", isRoute: true, icon: true },
   ];
 
   useEffect(() => {
@@ -31,8 +32,11 @@ const Navbar = () => {
         key={link.label}
         to={link.href}
         onClick={onClick}
-        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+        className={`text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 ${
+          link.icon ? 'text-primary font-medium' : ''
+        }`}
       >
+        {link.icon && <Volume2 className="h-3.5 w-3.5" />}
         {link.label}
       </Link>
     ) : (
