@@ -144,6 +144,22 @@ const Navbar = () => {
           >
             <div className="flex flex-col gap-4 p-6">
               {navLinks.map((link) => renderLink(link, () => setMobileOpen(false)))}
+              <div className="border-t border-border pt-3 mt-1">
+                <span className="text-xs text-muted-foreground uppercase tracking-wider flex items-center gap-1 mb-3">
+                  <Wrench className="h-3 w-3" /> Tools
+                </span>
+                {toolLinks.map((link) => (
+                  <Link
+                    key={link.label}
+                    to={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="text-sm text-primary font-medium hover:text-primary/80 transition-colors flex items-center gap-2 py-2"
+                  >
+                    <link.icon className="h-3.5 w-3.5" />
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
             </div>
           </motion.div>
         )}
