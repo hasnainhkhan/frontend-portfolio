@@ -32,8 +32,11 @@ const Navbar = () => {
         key={link.label}
         to={link.href}
         onClick={onClick}
-        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+        className={`text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 ${
+          link.icon ? 'text-primary font-medium' : ''
+        }`}
       >
+        {link.icon && <Volume2 className="h-3.5 w-3.5" />}
         {link.label}
       </Link>
     ) : (
