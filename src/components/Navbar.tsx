@@ -27,8 +27,10 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const renderLink = (link: typeof navLinks[0], onClick?: () => void) =>
-    link.isRoute ? (
+  const renderLink = (link: typeof navLinks[0], onClick?: () => void) => {
+    const Icon = typeof link.icon === 'function' ? link.icon : null;
+    
+    return link.isRoute ? (
       <Link
         key={link.label}
         to={link.href}
@@ -37,7 +39,7 @@ const Navbar = () => {
           link.icon ? 'text-primary font-medium' : ''
         }`}
       >
-        {link.icon && <Volume2 className="h-3.5 w-3.5" />}
+        {Icon && <Icon className="h-3.5 w-3.5" />}
         {link.label}
       </Link>
     ) : (
@@ -50,6 +52,7 @@ const Navbar = () => {
         {link.label}
       </a>
     );
+  };
 
   return (
     <motion.nav
