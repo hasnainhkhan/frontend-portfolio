@@ -8,6 +8,8 @@ import LanguageSwitcher from "./LanguageSwitcher";
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [toolsOpen, setToolsOpen] = useState(false);
+  const toolsRef = useRef<HTMLDivElement>(null);
   const { t } = useLanguage();
 
   const navLinks = [
@@ -17,9 +19,12 @@ const Navbar = () => {
     { label: t("nav.certifications"), href: "#certifications" },
     { label: t("nav.contact"), href: "#contact" },
     { label: t("nav.connect"), href: "/connect", isRoute: true, icon: UserCheck },
-    { label: "Resume Builder", href: "/resume-builder", isRoute: true, icon: FileText },
-    { label: "Email Templates", href: "/email-templates", isRoute: true, icon: Mail },
-    { label: t("pdf.heading1") + t("pdf.heading2"), href: "/pdf-reader", isRoute: true, icon: Volume2 },
+  ];
+
+  const toolLinks = [
+    { label: "Resume Builder", href: "/resume-builder", icon: FileText },
+    { label: "Email Templates", href: "/email-templates", icon: Mail },
+    { label: t("pdf.heading1") + t("pdf.heading2"), href: "/pdf-reader", icon: Volume2 },
   ];
 
   useEffect(() => {
@@ -28,7 +33,17 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const renderLink = (link: typeof navLinks[0], onClick?: () => void) => {
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (toolsRef.current && !toolsRef.current.contains(e.target as Node)) {
+        setToolsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const renderLink = (link: { label: string; href: string; isRoute?: boolean; icon?: any }, onClick?: () => void) => {
     const Icon = typeof link.icon === 'function' ? link.icon : null;
     
     return link.isRoute ? (
