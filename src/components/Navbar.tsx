@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Menu, X, Volume2 } from "lucide-react";
+import { Menu, X, Volume2, FileText } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageSwitcher from "./LanguageSwitcher";
 
@@ -17,7 +17,8 @@ const Navbar = () => {
     { label: t("nav.certifications"), href: "#certifications" },
     { label: t("nav.contact"), href: "#contact" },
     { label: t("nav.connect"), href: "/connect", isRoute: true },
-    { label: t("pdf.heading1") + t("pdf.heading2"), href: "/pdf-reader", isRoute: true, icon: true },
+    { label: "Resume Builder", href: "/resume-builder", isRoute: true, icon: FileText },
+    { label: t("pdf.heading1") + t("pdf.heading2"), href: "/pdf-reader", isRoute: true, icon: Volume2 },
   ];
 
   useEffect(() => {
@@ -26,8 +27,10 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const renderLink = (link: typeof navLinks[0], onClick?: () => void) =>
-    link.isRoute ? (
+  const renderLink = (link: typeof navLinks[0], onClick?: () => void) => {
+    const Icon = typeof link.icon === 'function' ? link.icon : null;
+    
+    return link.isRoute ? (
       <Link
         key={link.label}
         to={link.href}
@@ -36,7 +39,7 @@ const Navbar = () => {
           link.icon ? 'text-primary font-medium' : ''
         }`}
       >
-        {link.icon && <Volume2 className="h-3.5 w-3.5" />}
+        {Icon && <Icon className="h-3.5 w-3.5" />}
         {link.label}
       </Link>
     ) : (
@@ -49,6 +52,7 @@ const Navbar = () => {
         {link.label}
       </a>
     );
+  };
 
   return (
     <motion.nav

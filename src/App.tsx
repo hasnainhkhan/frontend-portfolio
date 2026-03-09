@@ -7,6 +7,7 @@ import { LanguageProvider, useLanguage } from "@/contexts/LanguageContext";
 import Index from "./pages/Index";
 import Connect from "./pages/Connect";
 import PdfReaderPage from "./pages/PdfReaderPage";
+import ResumeBuilder from "./pages/ResumeBuilder";
 import NotFound from "./pages/NotFound";
 import ThemeSwitcher from "./components/ThemeSwitcher";
 import Chatbot from "./components/Chatbot";
@@ -28,6 +29,7 @@ const AppContent = () => {
           <Route path="/" element={<Index />} />
           <Route path="/connect" element={<Connect />} />
           <Route path="/pdf-reader" element={<PdfReaderPage />} />
+          <Route path="/resume-builder" element={<ResumeBuilder />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
