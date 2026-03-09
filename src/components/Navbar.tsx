@@ -83,7 +83,38 @@ const Navbar = () => {
         </a>
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => renderLink(link))}
-        </div>
+          <div ref={toolsRef} className="relative">
+            <button
+              onClick={() => setToolsOpen(!toolsOpen)}
+              className="text-sm text-primary font-medium hover:text-primary/80 transition-colors flex items-center gap-1"
+            >
+              <Wrench className="h-3.5 w-3.5" />
+              Tools
+              <ChevronDown className={`h-3 w-3 transition-transform ${toolsOpen ? "rotate-180" : ""}`} />
+            </button>
+            <AnimatePresence>
+              {toolsOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -5 }}
+                  className="absolute top-full right-0 mt-2 glass rounded-xl p-3 min-w-[200px] flex flex-col gap-2"
+                >
+                  {toolLinks.map((link) => (
+                    <Link
+                      key={link.label}
+                      to={link.href}
+                      onClick={() => setToolsOpen(false)}
+                      className="text-sm text-primary font-medium hover:text-primary/80 hover:bg-primary/5 transition-colors flex items-center gap-2 px-3 py-2 rounded-lg"
+                    >
+                      <link.icon className="h-3.5 w-3.5" />
+                      {link.label}
+                    </Link>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         <div className="flex items-center gap-3">
           <LanguageSwitcher />
           <a
