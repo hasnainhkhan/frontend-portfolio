@@ -8,6 +8,7 @@ import Connect from "./pages/Connect";
 import NotFound from "./pages/NotFound";
 import ThemeSwitcher from "./components/ThemeSwitcher";
 import Chatbot from "./components/Chatbot";
+import AccessibilityButton from "./components/AccessibilityButton";
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <ThemeSwitcher />
+      <AccessibilityButton />
       <Chatbot />
       <BrowserRouter>
         <Routes>
