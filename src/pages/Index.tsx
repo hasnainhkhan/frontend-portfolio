@@ -4,7 +4,7 @@ import AboutSection from "@/components/AboutSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
 import CertificationsSection from "@/components/CertificationsSection";
-
+import PdfReader from "@/components/PdfReader";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -16,7 +16,7 @@ const Index = () => {
       <ProjectsSection />
       <SkillsSection />
       <CertificationsSection />
-      
+      <PdfReader />
       <Footer />
     </div>
   );
