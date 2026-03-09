@@ -106,17 +106,6 @@ const ProjectsSection = () => {
         "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&h=400&fit=crop",
       ],
     },
-    {
-      title: t("projects.p4.title"),
-      desc: t("projects.p4.desc"),
-      tags: ["JavaScript", "HTML", "CSS", "Web Dev"],
-      github: "https://github.com/hasnainhkhan/Java_Script",
-      images: [
-        "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=600&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=600&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1621839673705-6617adf9e890?w=600&h=400&fit=crop",
-      ],
-    },
   ];
 
   return (
