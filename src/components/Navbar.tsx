@@ -1,13 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Menu, X, Volume2, FileText, Mail, UserCheck } from "lucide-react";
+import { Menu, X, Volume2, FileText, Mail, UserCheck, Wrench, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [toolsOpen, setToolsOpen] = useState(false);
+  const toolsRef = useRef<HTMLDivElement>(null);
   const { t } = useLanguage();
 
   const navLinks = [
@@ -17,9 +19,12 @@ const Navbar = () => {
     { label: t("nav.certifications"), href: "#certifications" },
     { label: t("nav.contact"), href: "#contact" },
     { label: t("nav.connect"), href: "/connect", isRoute: true, icon: UserCheck },
-    { label: "Resume Builder", href: "/resume-builder", isRoute: true, icon: FileText },
-    { label: "Email Templates", href: "/email-templates", isRoute: true, icon: Mail },
-    { label: t("pdf.heading1") + t("pdf.heading2"), href: "/pdf-reader", isRoute: true, icon: Volume2 },
+  ];
+
+  const toolLinks = [
+    { label: "Resume Builder", href: "/resume-builder", icon: FileText },
+    { label: "Email Templates", href: "/email-templates", icon: Mail },
+    { label: t("pdf.heading1") + t("pdf.heading2"), href: "/pdf-reader", icon: Volume2 },
   ];
 
   useEffect(() => {
@@ -28,7 +33,17 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const renderLink = (link: typeof navLinks[0], onClick?: () => void) => {
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (toolsRef.current && !toolsRef.current.contains(e.target as Node)) {
+        setToolsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const renderLink = (link: { label: string; href: string; isRoute?: boolean; icon?: any }, onClick?: () => void) => {
     const Icon = typeof link.icon === 'function' ? link.icon : null;
     
     return link.isRoute ? (
@@ -68,6 +83,38 @@ const Navbar = () => {
         </a>
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => renderLink(link))}
+          <div ref={toolsRef} className="relative">
+            <button
+              onClick={() => setToolsOpen(!toolsOpen)}
+              className="text-sm text-primary font-medium hover:text-primary/80 transition-colors flex items-center gap-1"
+            >
+              <Wrench className="h-3.5 w-3.5" />
+              Tools
+              <ChevronDown className={`h-3 w-3 transition-transform ${toolsOpen ? "rotate-180" : ""}`} />
+            </button>
+            <AnimatePresence>
+              {toolsOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -5 }}
+                  className="absolute top-full right-0 mt-2 glass rounded-xl p-3 min-w-[200px] flex flex-col gap-2"
+                >
+                  {toolLinks.map((link) => (
+                    <Link
+                      key={link.label}
+                      to={link.href}
+                      onClick={() => setToolsOpen(false)}
+                      className="text-sm text-primary font-medium hover:text-primary/80 hover:bg-primary/5 transition-colors flex items-center gap-2 px-3 py-2 rounded-lg"
+                    >
+                      <link.icon className="h-3.5 w-3.5" />
+                      {link.label}
+                    </Link>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
         <div className="flex items-center gap-3">
           <LanguageSwitcher />
@@ -97,6 +144,22 @@ const Navbar = () => {
           >
             <div className="flex flex-col gap-4 p-6">
               {navLinks.map((link) => renderLink(link, () => setMobileOpen(false)))}
+              <div className="border-t border-border pt-3 mt-1">
+                <span className="text-xs text-muted-foreground uppercase tracking-wider flex items-center gap-1 mb-3">
+                  <Wrench className="h-3 w-3" /> Tools
+                </span>
+                {toolLinks.map((link) => (
+                  <Link
+                    key={link.label}
+                    to={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="text-sm text-primary font-medium hover:text-primary/80 transition-colors flex items-center gap-2 py-2"
+                  >
+                    <link.icon className="h-3.5 w-3.5" />
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
             </div>
           </motion.div>
         )}
