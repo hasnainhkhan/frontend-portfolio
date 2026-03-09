@@ -18,6 +18,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <ThemeSwitcher />
+      <AccessibilityButton />
       <Chatbot />
       <BrowserRouter>
         <Routes>
