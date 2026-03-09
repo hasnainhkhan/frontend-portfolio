@@ -86,7 +86,7 @@ const Navbar = () => {
           <div ref={toolsRef} className="relative">
             <button
               onClick={() => setToolsOpen(!toolsOpen)}
-              className="text-sm text-primary font-medium hover:text-primary/80 transition-colors flex items-center gap-1"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
             >
               <Wrench className="h-3.5 w-3.5" />
               Tools
